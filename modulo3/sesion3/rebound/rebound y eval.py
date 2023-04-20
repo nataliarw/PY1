@@ -14,12 +14,13 @@ b = 30
 print (a*b)
 
 
-Y=81
 from math import sqrt
+Y=81
 c = sqrt(81)
 print (c)
 
-Y=81
+
 import math
+Y=81
 c = sqrt(81)
 print (c)
