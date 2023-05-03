@@ -36,6 +36,7 @@ def construyendo(num):
     claves= check_length_two(num)
     keys=["Suma", "Resta", "multiplicacion", "division"]
     dic1 = zip(keys, claves)
+
     return dict(dic1)
     
     

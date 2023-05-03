@@ -6,7 +6,7 @@
 # • Finalmente, imprimiremos en pantalla el diccionario resultante. 
 
 listas = [[1,2,3], [0,4,5], [4,0,1], [6,5,4]] 
-
+forma propia
 for sublista in listas:
     if sublista[0] ==0:
         continue
@@ -19,3 +19,20 @@ claves =["A", "B", "C", "D"]
 diccionario = zip(claves, listas)
 diccionario = dict(diccionario)
 print(diccionario)
+
+# forma clase
+# diccionario =dict()
+# contador = 0
+# otro_diccionario ={}
+# for sublista in listas:
+#     diccionario[claves[contador]] =sublista
+#     otro_diccionario[claves[listas.index(sublista)]]=sublista #probando otra opcion sin contador
+#     contador +=1
+#     if sublista[0] ==0:
+#         continue
+#     for num in sublista:
+#         if num==0:
+#             continue
+#         print(num)
+# print(diccionario)
+# print(otro_diccionario)

@@ -36,3 +36,7 @@ for i in precios:
     descuento.append(i)
     
 print(sum(descuento))
+
+print("cuantas veces aparece el elemento" , precios.count(12.30) )
+
+precios.insert(2, 8.5) # esto sale la posicion en que lo quiero poner
