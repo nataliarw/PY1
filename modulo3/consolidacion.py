@@ -6,6 +6,8 @@
 # mprimir en pantalla la lista completa de nombres antes de ser modificados; luego imprimir los nombres de los magos grandiosos, 
 # los nombres de los científicos, y los restantes. 
 
+
+#OPCION CON LISTAS
 # se declara la lista original
 lista_completa = ["Harry Houdini", "Newton", "David Blaine", "Hawking", "Messi", "Teller", "Einstein", "Pele", "Juanes"]
 # se separa en las listas solicitadas
@@ -40,3 +42,4 @@ def imprimir_nombres():
         print(i)
 # imprime por consola lo solicitado, en el orden indicado
 imprimir_nombres()
+

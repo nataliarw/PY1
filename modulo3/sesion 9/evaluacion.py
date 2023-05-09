@@ -19,8 +19,11 @@ def multi():
     multipli= numeros[0] *numeros[1]
     return multipli
 def dividir():
-    divi= numeros[0]//numeros[1]
-    return divi
+    if numeros[1] ==0:
+        return None
+    else:
+        divi= numeros[0]//numeros[1]
+        return divi
 # asegurando que sean dos parametros y recibiendo resultados como tupla
 def check_length_two(num):
     if len(num) == 2:
