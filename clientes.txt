@@ -1,0 +1,2 @@
+Cliente(nombre=juan, apellido=perez, rut=3-', descuento=4)
+Cliente(nombre=maria, apellido=gomez, rut=4-5, descuento=5)

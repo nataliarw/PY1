@@ -1,0 +1,12 @@
+modulo 4 sesion 2
+
+rebound:
+
+https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/nataliarw/PY1/blob/main/modulo%204/sesion%202/rebound.py
+
+evaluacion:
+	normal
+https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/nataliarw/PY1/blob/main/modulo%204/sesion%202/evaluacion.py
+
+	con decorators
+https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/nataliarw/PY1/blob/main/modulo%204/sesion%202/evaluacion_decorators.py
