@@ -7,6 +7,29 @@ from modelo.carga import Carga
 from modelo.motocicleta import Motocicleta
 import csv
 
+#PARTE 1 CREAR INSTANCIAS DESDE LAS CLASES
+ingreso = int(input("Cuántos automoviles desea ingresar: "))
+
+i = 1
+
+automovil_service = AutomovilService()
+lista=[]
+while i <= ingreso:
+    print(f"ingrese el automovil {i}: ")
+    automovil =automovil_service.crear_automovil(i)
+    #automovil.guardar_datos_csv("vehiculos.csv")
+    lista.append(automovil.__str__())
+    i+=1
+
+# forma alternativa de impresion
+# a=1
+# for automovil in  lista:
+#     print('DATOS DEL AUTOMOVIL:',a, automovil)
+#     a+=1
+
+for i in range(len(lista)):
+    print("Datos del automovil", i+1,":", lista[i])
+    
 #parte 3 recuperacion del archivo completo
 def leer_datos_cvs(nombre_archivo):      
     vehiculos =[]
@@ -44,26 +67,3 @@ motocicleta.guardar_datos_csv("vehiculos.csv")
 print(leer_datos_cvs("vehiculos.csv"))
 
 
-#PARTE 1 CREAR INSTANCIAS DESDE LAS CLASES
-ingreso = int(input("Cuántos automoviles desea ingresar: "))
-
-i = 1
-
-automovil_service = AutomovilService()
-lista=[]
-while i <= ingreso:
-    print(f"ingrese el automovil {i}: ")
-    automovil =automovil_service.crear_automovil(i)
-    #automovil.guardar_datos_csv("vehiculos.csv")
-    lista.append(automovil.__str__())
-    i+=1
-
-# forma alternativa de impresion
-# a=1
-# for automovil in  lista:
-#     print('DATOS DEL AUTOMOVIL:',a, automovil)
-#     a+=1
-
-for i in range(len(lista)):
-    print("Datos del automovil", i+1,":", lista[i])
-    
