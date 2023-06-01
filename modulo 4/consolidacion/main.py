@@ -5,28 +5,46 @@ from modelo.bicicleta import Bicicleta
 from modelo.particular import Particular
 from modelo.carga import Carga
 from modelo.motocicleta import Motocicleta
+import csv
 
+#parte 3 recuperacion del archivo completo
+def leer_datos_cvs(nombre_archivo):      
+    vehiculos =[]
+    try:
+        with open(nombre_archivo, "r") as file:   
+                csv.reader(file)
+            
+                for vehiculo in file:
+                    vehiculos.append(vehiculo)    
+           
+                return vehiculos
+    except Exception as e:
+            print("ERROR", e)
 
+#parte 2 creacion de instancias:
 particular = Particular("Ford", "Fiesta", 4, "180", "500", 5)
 carga = Carga("Daft Trucks", "G 38", "10", "120", "1000", "20000")
 bicicleta = Bicicleta("Shimano", "MT Ranger", "2", "Carrera")
 motocicleta = Motocicleta("BMW", "F800s","2","Deportiva","2T","Doble Viga", "21")
-# print(f"{particular} \n {carga} \n {bicicleta} \n {motocicleta}")
-# print("Motocicleta es instancia con relacion a Vehículo: ", isinstance(motocicleta, Vehiculo))
-# print("Motocicleta es instancia con relacion a Automovil: ", isinstance(motocicleta, Automovil))
-# print("Motocicleta es instancia con relacion a Vehículo de carga: ", isinstance(motocicleta, Carga))
-# print("Motocicleta es instancia con relacion a Vehículo particular: ", isinstance(motocicleta, Particular))
-# print("Motocicleta es instancia con relacion a Bicicleta: ", isinstance(motocicleta, Bicicleta))
-# print("Motocicleta es instancia con relacion a Motocicleta: ", isinstance(motocicleta, Motocicleta))
+
+print(f"{particular} \n {carga} \n {bicicleta} \n {motocicleta}")
+#parte 2 isinstance
+print("Motocicleta es instancia con relacion a Vehículo: ", isinstance(motocicleta, Vehiculo))
+print("Motocicleta es instancia con relacion a Automovil: ", isinstance(motocicleta, Automovil))
+print("Motocicleta es instancia con relacion a Vehículo de carga: ", isinstance(motocicleta, Carga))
+print("Motocicleta es instancia con relacion a Vehículo particular: ", isinstance(motocicleta, Particular))
+print("Motocicleta es instancia con relacion a Bicicleta: ", isinstance(motocicleta, Bicicleta))
+print("Motocicleta es instancia con relacion a Motocicleta: ", isinstance(motocicleta, Motocicleta))
 particular.guardar_datos_csv("vehiculos.csv")
 carga.guardar_datos_csv("vehiculos.csv")
 bicicleta.guardar_datos_csv("vehiculos.csv")
 motocicleta.guardar_datos_csv("vehiculos.csv")
 
-print(particular.leer_datos_cvs("vehiculos.csv"))
+
+print(leer_datos_cvs("vehiculos.csv"))
 
 
-
+#PARTE 1 CREAR INSTANCIAS DESDE LAS CLASES
 ingreso = int(input("Cuántos automoviles desea ingresar: "))
 
 i = 1

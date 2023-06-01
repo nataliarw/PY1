@@ -38,15 +38,4 @@ class Vehiculo:
         except Exception as e:
             print("Error:", e)
         
-    def leer_datos_cvs(self, nombre_archivo):      
-        vehiculos =[]
-        try:
-            with open(nombre_archivo, "r") as file:   
-                csv.reader(file)
-            
-                for vehiculo in file:
-                    vehiculos.append(vehiculo)    
-           
-                return vehiculos
-        except Exception as e:
-            print("ERROR", e)
+
