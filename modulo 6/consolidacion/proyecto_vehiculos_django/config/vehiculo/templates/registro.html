@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+
+{% load bootstrap5 %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<section class="container m-5 " >
+    <div class=" bg-warning  p-5 rounded col-12 col-md-8 col-lg-6 col-xl-5 mx-auto">
+      <h2 class="text-primary mr-5">Registro Nuevo Usuario</h2>
+
+    <form method="post" action="{% url 'registro' %}" class="text-primary pr-3 ">
+         {% csrf_token %}
+
+             {{ form|crispy}}
+
+
+                <button class="btn btn-outline-primary btn-lg mx-auto "  name= "submit" type="submit"> Crear Registro</button>
+
+    </form>
+    </div>
+</section>
+
+
+{% endblock %}

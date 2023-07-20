@@ -1,0 +1,37 @@
+
+SELECT c.*, d.detalle_orden_id FROM clientes c
+LEFT JOIN detalle_ordenes d
+ON c.cliente_id = d.cliente_id;
+-- CLIENTES QUE NO TIENEN ORDENES ASOCIADAS.
+SELECT c.* FROM clientes c
+LEFT JOIN detalle_ordenes d
+ON c.cliente_id = d.cliente_id
+WHERE d.cliente_id is NULL;
+-- CLIENTES ORDENES ASOCIADAS.
+SELECT c.* FROM clientes c
+LEFT JOIN detalle_ordenes d
+ON c.cliente_id = d.cliente_id
+WHERE d.cliente_id is not NULL;
+
+--obtener articulos que no han sido incluidos en ordenes
+INSERT INTO articulos Values('2020', 'Poste', 50);
+
+SELECT a.* FROM articulos a
+LEFT JOIN detalle_ordenes d -- FUNCIONA FULL JOIN
+ON a.codigo = d.codigo
+WHERE d.codigo is null;
+
+select * FROM articulos;
+select * FROM detalle_ordenes;
+--OBTENER LAS ORDENES REALIZADAS POR CLIENTES DE UNA CIUDAD ESPECIFICA
+SELECT d.*, c.nombre_cliente FROM detalle_ordenes d
+INNER JOIN clientes c
+ON d.cliente_id = c.cliente_id
+WHERE c.ciudad = 'Concepción';
+
+--OBTENER TODAS LAS ORDENES JUNTO CON LA INFO DEL CLIENTE Y EL ARTICULO CORRESPONDIENTE
+SELECT d.*, a.nombre_articulo, c.nombre_cliente, c.ciudad FROM detalle_ordenes d
+JOIN articulos a
+ON d.codigo = a.codigo
+JOIN clientes c 
+ON d.cliente_id = c.cliente_id;

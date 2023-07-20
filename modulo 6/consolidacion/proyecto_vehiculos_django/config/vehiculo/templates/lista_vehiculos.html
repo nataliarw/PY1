@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+{% load bootstrap5 %}
+{% block content %}
+<section class="container mt-5">
+  <div class="d-flex mb-2">
+     <h2 class="d-inline-flex">Catálogo de Vehículos</h2>
+  </div>
+
+  {% bootstrap_messages %}
+  {% if vehiculos %}
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Marca</th>
+        <th scope="col">Modelo</th>
+        <th scope="col">Serial Carroceria</th>
+        <th scope="col">Serial Motor</th>
+        <th scope="col">Categoría</th>
+        <th scope="col">Precio</th>
+          {% if user.is_authenticated %}
+          <th scope="col">Categoría de Precio</th>
+          {% endif %}
+      </tr>
+    </thead>
+    <tbody>
+    {% for vehiculo in vehiculos %}
+      <tr>
+            <td>{{vehiculo.marca}}</td>
+            <td>{{vehiculo.modelo}}</td>
+            <td>{{vehiculo.serial_carroceria}}</td>
+            <td>{{vehiculo.serial_motor}}</td>
+            <td>{{vehiculo.categoria}}</td>
+            <td>{{vehiculo.precio}}</td>
+            {% if user.is_authenticated %}
+            <td>{{vehiculo.condicion_precio}}</td>
+            {% endif %}
+      </tr>
+    {% empty %}
+      <tr>
+          <td colspan="4">No hay vehículos para mostrar</td>
+      </tr>
+    {%endfor %}
+    </tbody>
+  </table>
+
+  {% else %}
+  <p> No hay vehículos mostrar</p>
+  {% endif %}
+</section>
+
+{% endblock %}

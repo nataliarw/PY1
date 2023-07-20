@@ -1,0 +1,10 @@
+
+.gradient-custom {
+    background-color: rgb(17, 17, 203);
+}
+
+ #enlace-sin-subrayado {
+            text-decoration: none;
+            color: rgb(0 0 0);
+            font-size: large;
+ }
