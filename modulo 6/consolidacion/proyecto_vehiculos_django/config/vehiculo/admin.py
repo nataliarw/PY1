@@ -1,10 +1,11 @@
 from django.contrib import admin
+from import_export.admin import ImportExportModelAdmin
 
 from .models import Vehiculo
 
 
 # Register your models here.
-class VehiculoAdmin(admin.ModelAdmin):
+class VehiculoAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     readonly_fields = ('fecha_creacion', 'fecha_modificacion')
     list_display = ('marca', 'modelo', 'serial_carroceria', 'serial_motor', 'precio', 'condicion_precio')
     list_filter = ('marca', 'modelo', 'serial_carroceria', 'serial_motor', 'precio')
@@ -22,3 +23,6 @@ class VehiculoAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Vehiculo, VehiculoAdmin)
+admin.site.site_header = 'Catalogo de Vehiculos'
+admin.site.index_title = 'Panel de control'
+admin.site.site_title = 'Panel de Control'
