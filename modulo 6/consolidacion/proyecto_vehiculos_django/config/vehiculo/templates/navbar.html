@@ -25,7 +25,7 @@
 
         {% elif user.is_authenticated %}
         <li class="nav-item">
-          <a class="nav-link text-warning" href="#" >Sin permiso para agregar vehiculos</a>
+          <a class="nav-link text-warning" href="#" >{{user.username}} no puede agregar vehiculos</a>
         </li>
          {% endif %}
 
