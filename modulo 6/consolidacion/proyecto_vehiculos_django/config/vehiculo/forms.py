@@ -35,8 +35,12 @@ class VehiculoForm(forms.ModelForm):  # modelform para que se enlace con el mode
 class CustomUserCreationForm(UserCreationForm):
     username = forms.CharField(label='Nombre usuario', min_length=5, max_length=150)
     email = forms.EmailField(label='Email')
+    confirm_email = forms.EmailField(label='Email')
     password1 = forms.CharField(label='Contraseña', widget=forms.PasswordInput)
     password2 = forms.CharField(label='Confirmar contraseña', widget=forms.PasswordInput)
+
+    class Meta(UserCreationForm.Meta):
+        fields = ('username', 'email', 'confirm_email', 'password1', 'password2')
 
     def username_clean(self):
         username = self.cleaned_data['username'].lower()
@@ -51,6 +55,13 @@ class CustomUserCreationForm(UserCreationForm):
         if new.count():
             raise ValidationError(" Email ya registrado")
         return email
+
+    def clean(self):
+        email1 = self.cleaned_data['email']
+        email2 = self.cleaned_data['confirm_email']
+        if email1 and email2 and email1 != email2:
+            raise ValidationError("Emails no coinciden")
+        return email2
 
     def clean_password2(self):
         password1 = self.cleaned_data['password1']

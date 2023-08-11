@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+
+
+{% load static %}
+{% block content %}
+
+    <section class="container mt-5 text-center">
+        <h2>Laboratorios</h2>
+        <div class=" mt-5">
+            <img class="w-50 pt-5" src="{% static 'laboratorio/img/lab.jpg' %}" alt="lab"/><br><br>
+            <a href="{% url 'lista_laboratorios' %}" id="enlace-sin-subrayado">VER-CREAR-EDITAR-LABORATORIOS</a>
+
+        </div>
+
+    </section>
+{%endblock%}

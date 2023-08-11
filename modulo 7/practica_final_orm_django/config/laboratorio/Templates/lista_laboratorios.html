@@ -1,0 +1,73 @@
+{% extends 'layout.html' %}
+{% load bootstrap5 %}
+{% block content %}
+<section class="container mt-5">
+  <div class="d-flex mb-2">
+     <h2 class="d-inline-flex">Informacion de  Laboratorios</h2>
+      <a class="d-inline-flex btn btn-primary ms-2" href="{% url 'crear_laboratorio' %}" role="button">Crear</a>
+  </div>
+
+  {% bootstrap_messages %}
+  {% if laboratorios %}
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Ciudad</th>
+        <th scope="col">Pais</th>
+        <th scope="col">Editar</th>
+        <th scope="col">Eliminar</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for laboratorio in laboratorios %}
+      <tr>
+        <td>{{laboratorio.nombre}}</td>
+        <td>{{laboratorio.ciudad}}</td>
+        <td>{{laboratorio.pais}}</td>
+        <td>
+          <a class="btn p-0" href="{% url 'editar_laboratorio' laboratorio_id=laboratorio.id %}"  role="button" data-bs-toggle="tooltip" data-bs-placement="top"
+        title="Editar">
+          <i class="fa fa-edit fa-lg text-primary"></i>
+          </a>
+        </td>
+         <td>
+          <a class="btn p-0" data-bs-toggle="modal" data-bs-target="#eliminarModal" role="button" data-bs-placement="top"
+        title="Borrar" >
+          <i class="fa fa-trash fa-lg text-danger ms-3"></i>
+          </a>
+        </td>
+        <div class="modal fade" id="eliminarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Eliminar</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                        <p> Esta acción eliminará el laboratorio de la base de datos, ¿está seguro que desea continuar?</p>
+                        </div>
+                         <div class="modal-footer">
+                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button><a class="btn btn-primary ms-2" href="{% url 'borrar_laboratorio' laboratorio_id=laboratorio.id %}" role="button">Borrar Laboratorio</a>
+                    </div>
+                 </div>
+                </div>
+      </tr>
+    {% empty %}
+      <tr>
+          <td colspan="4">No Hay Laboratorios Disponibles</td>
+      </tr>
+    {%endfor %}
+    </tbody>
+  </table>
+
+  {% else %}
+  <p> No hay laboratorios que mostrar</p>
+  {% endif %}
+</section>
+
+<div class="m-5 ">
+   <a href="{% url 'index' %}" id="enlace-sin-subrayado"> <---Volver a pagina de origen</a>
+</div>
+
+{% endblock %}

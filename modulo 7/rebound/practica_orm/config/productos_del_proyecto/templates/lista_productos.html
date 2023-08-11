@@ -1,0 +1,77 @@
+{% extends 'layout.html' %}
+{% load bootstrap5 %}
+{% block content %}
+<section class="container mt-5">
+  <div class="d-flex mb-2">
+     <h2 class="d-inline-flex">Catálogo de Productos</h2>
+      <a class="d-inline-flex btn btn-primary ms-5" href="{% url 'add' %}" role="button">Agregar Producto</a>
+  </div>
+
+  {% bootstrap_messages %}
+  {% if productos %}
+  <table class="table table-striped">
+    <thead>
+      <tr>
+<!--        <th scope="col">ID</th>-->
+        <th scope="col">Nombre</th>
+        <th scope="col">Descripcion</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Fábrica</th>
+          <th scope="col">Fecha de vencimiento</th>
+          <th scope="col">Acción</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for producto in productos %}
+      <tr>
+<!--            <td>{{producto.id}}</td>-->
+            <td>{{producto.nombre}}</td>
+            <td>{{producto.descripcion}}</td>
+            <td>{{producto.precio}}</td>
+            <td>{{producto.fabrica}}</td>
+          <td>{{producto.f_vencimiento}}</td>
+            <td>
+             <a class="btn p-0"  href="{% url 'editar_producto' producto_id=producto.id %}"  role="button" data-bs-toggle="tooltip" data-bs-placement="top"
+        title="Editar">
+            <i class="fa fa-edit fa-lg text-primary"></i>
+            </a>
+            <a class="btn p-0" data-bs-toggle="modal" data-bs-target="#eliminarModal" role="button"  data-bs-placement="top"
+        title="Borrar" >
+            <i class="fa fa-trash fa-lg text-danger ms-3"></i>
+           </a>
+            </td>
+             <div class="modal fade" id="eliminarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">BORRAR PRODUCTO</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                        <p> Esta acción eliminará el producto de la base de datos, ¿está seguro que desea continuar?</p>
+                        </div>
+                         <div class="modal-footer">
+                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button><a class="btn btn-primary ms-2" href="{% url 'borrar_producto' producto_id=producto.id %}" role="button">Borrar Producto</a>
+                    </div>
+                 </div>
+                </div>
+             </div>
+
+      </tr>
+    {% empty %}
+      <tr>
+          <td colspan="4">No hay productos para mostrar</td>
+      </tr>
+    {%endfor %}
+    </tbody>
+  </table>
+
+  {% else %}
+  <p> No hay productos para mostrar</p>
+  {% endif %}
+</section>
+
+
+
+
+{% endblock %}
